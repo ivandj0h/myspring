@@ -24,4 +24,10 @@ public class UserServiceImpl implements UserService {
         User[] users = restTemplate.getForObject(externalApiUrl, User[].class);
         return Arrays.asList(users);
     }
+
+    @Override
+    public User getUserById(Long id) {
+        String url = externalApiUrl + "/" + id;
+        return restTemplate.getForObject(url, User.class);
+    }
 }
